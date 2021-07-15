@@ -7,42 +7,27 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="DI.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="20" Width="150" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True" WindowStartupLocation="Manual" Loaded="Window_Loaded">
-    <Grid x:Name="grid" Height="20" VerticalAlignment="Bottom" Background="White">
-        <Grid.ContextMenu>
+        AllowsTransparency="True"
+        Height="20" Width="150" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True" WindowStartupLocation="Manual" Loaded="Window_Loaded" Deactivated="Window_Deactivated" Background="{x:Null}">
+    <Border x:Name="border" BorderBrush="Black" Background="#fff" BorderThickness="1" CornerRadius="0,0,10,10">
+        <Border.ContextMenu>
             <ContextMenu Width="175">
-                <MenuItem Background="Red" Foreground="White" Header="Red" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="Green" Foreground="White" Header="Green" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="Blue" Foreground="White" Header="Blue" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="Purple" Foreground="White" Header="Purple" Click="ListBoxColorItem_MouseLeftButtonDown"/>
+                <MenuItem Background="#FF5D5D" Foreground="#fff" Header="Red" Click="ListBoxColorItem_MouseLeftButtonDown"/>
+                <MenuItem Background="#4ACC4A" Foreground="#fff" Header="Green" Click="ListBoxColorItem_MouseLeftButtonDown"/>
+                <MenuItem Background="#4C4CFF" Foreground="#fff" Header="Blue" Click="ListBoxColorItem_MouseLeftButtonDown"/>
+                <MenuItem Background="#B742B7" Foreground="#fff" Header="Purple" Click="ListBoxColorItem_MouseLeftButtonDown"/>
                 <Separator/>
-                <Label x:Name="labelColorHeader" Content="Color Hex Code"/>
-                <TextBox x:Name="textBoxColor" Background="White" KeyUp="TextBoxColor_KeyUp" Width="125"/>
+                <Label Content="Color Hex Code"/>
+                <TextBox x:Name="textBoxColor" Background="#fff" KeyUp="TextBoxColor_KeyUp" Width="125"/>
                 <Separator/>
-                <Label x:Name="labelDisplayTextHeader" Content="Display Text"/>
-                <TextBox x:Name="textBoxDisplayText" Background="White" KeyUp="TextBoxDisplayText_KeyUp" Width="125" CharacterCasing="Upper"/>
+                <Label Content="Display Text"/>
+                <TextBox x:Name="textBoxDisplayText" Background="#fff" KeyUp="TextBoxDisplayText_KeyUp" Width="125" CharacterCasing="Upper"/>
                 <Separator/>
                 <MenuItem Background="{x:Null}" Header="Close" Click="CloseLabel_Click"/>
             </ContextMenu>
-        </Grid.ContextMenu>
-        <Button x:Name="label" Content="X" Margin="0,0,123,0" VerticalAlignment="Center" Background="Transparent" BorderBrush="Transparent" Click="CloseLabel_Click"/>
-        <TextBox x:Name="displayedTextBox" Text=""  Margin="28,0,0,0" RenderTransformOrigin="0.5,0.5" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CharacterCasing="Upper" IsEnabled="False" IsReadOnly="True">
-            <TextBox.ContextMenu>
-                <ContextMenu Width="175">
-                    <MenuItem Background="Red" Foreground="White" Header="Red" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                    <MenuItem Background="Green" Foreground="White" Header="Green" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                    <MenuItem Background="Blue" Foreground="White" Header="Blue" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                    <MenuItem Background="Purple" Foreground="White" Header="Purple" Click="ListBoxColorItem_MouseLeftButtonDown"/>                    
-                    <Separator/>
-                    <Label x:Name="labelColorHeader2" Content="Color Hex Code"/>
-                    <TextBox x:Name="textBoxColor2" Background="White" KeyUp="TextBoxColor2_KeyUp" Width="125"/>
-                    <Separator/>
-                    <Label x:Name="labelDisplayTextHeader2" Content="Display Text"/>
-                    <TextBox x:Name="textBoxDisplayText2" Background="White" KeyUp="TextBoxDisplayText2_KeyUp" Width="125" CharacterCasing="Upper"/>
-                    <Separator/>
-                    <MenuItem Background="{x:Null}" Header="Close" Click="CloseLabel_Click"/>
-                </ContextMenu>
-            </TextBox.ContextMenu>
-        </TextBox>
-    </Grid>
+        </Border.ContextMenu>
+        <StackPanel Orientation="Horizontal" Background="{x:Null}">
+            <Label  x:Name="displayedText" FontSize="12" Content="test" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="148" Margin="0,-5,0,-3" />
+        </StackPanel>
+    </Border>
 </Window>

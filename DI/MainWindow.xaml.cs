@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -21,33 +22,18 @@ namespace DI
     /// </summary>
     public partial class MainWindow : Window
     {
-        #region Global Variables
-        
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-
-        #endregion
-
         #region Constructor
 
         public MainWindow()
         {
             InitializeComponent();
 
-            dispatcherTimer.Tick += DispatcherTimer_Tick; ;
-            dispatcherTimer.Interval = new TimeSpan(1, 0, 0);
-            dispatcherTimer.Start();
+            displayedText.Content = string.Empty;
         }
 
         #endregion
 
         #region Methods
-
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            this.Topmost = true;
-            this.Activate();            
-        }
-
         private void SetColorFromHex(string hex)
         {
             if (!string.IsNullOrEmpty(hex))
@@ -60,30 +46,29 @@ namespace DI
 
                         introducedColor = (Color)ColorConverter.ConvertFromString(hex);
 
-                        textBoxColor.Background = new SolidColorBrush(introducedColor);
-                        textBoxColor.Foreground = Brushes.White;
-
-                        grid.Background = displayedTextBox.Background = new SolidColorBrush(introducedColor);
-                        label.Foreground = displayedTextBox.Foreground = Brushes.White;
+                        textBoxColor.Background = border.Background = border.BorderBrush = new SolidColorBrush(introducedColor);
+                        textBoxColor.Foreground = displayedText.Foreground = ContrastColor(new SolidColorBrush(introducedColor));
                     }
                 }
                 catch (Exception)
                 {
-                    textBoxColor.Background = Brushes.White;
-                    textBoxColor.Foreground = Brushes.Black;
-
-                    grid.Background = displayedTextBox.Background = Brushes.White;
-                    label.Foreground = displayedTextBox.Foreground = Brushes.Black;
+                    border.Background = textBoxColor.Background = Brushes.White;
+                    border.BorderBrush = textBoxColor.Foreground = displayedText.Foreground = Brushes.Black;
                 }
+
+                textBoxColor.Text = hex;
             }
         }
+        public SolidColorBrush ContrastColor(SolidColorBrush value)
+        {
+            var c = value.Color;
+            var l = 0.2126 * c.ScR + 0.7152 * c.ScG + 0.0722 * c.ScB;
 
+            return l < 0.5 ? Brushes.White : Brushes.Black;
+        }
         #endregion
 
         #region Events
-
-        #region Window
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -92,19 +77,20 @@ namespace DI
             this.Top = 0;
             this.Topmost = true;
         }
-
-        #endregion
-
-        #region Colors
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            Window window = (Window)sender;
+            window.Topmost = true;
+        }
 
         private void ListBoxColorItem_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             MenuItem clickedItem = (MenuItem)sender;
-            
-            grid.Background = displayedTextBox.Background = clickedItem.Background;
-            label.Foreground = displayedTextBox.Foreground = Brushes.White;
+
+            SetColorFromHex(new BrushConverter().ConvertToString(clickedItem.Background));
+            //border.Background = border.BorderBrush = clickedItem.Background;
         }
-        
+
         private void TextBoxColor_KeyUp(object sender, KeyEventArgs e)
         {
             string introducedHex = textBoxColor.Text;
@@ -116,44 +102,15 @@ namespace DI
 
             SetColorFromHex(introducedHex);
         }
-
-        private void TextBoxColor2_KeyUp(object sender, KeyEventArgs e)
-        {
-            string introducedHex = textBoxColor2.Text;
-
-            if (!string.IsNullOrEmpty(introducedHex) && introducedHex[0] != '#')
-            {
-                introducedHex = introducedHex.Insert(0, "#");
-            }
-
-            SetColorFromHex(introducedHex);
-        }
-
-        #endregion
-
-        #region Displayed Text
-
         private void TextBoxDisplayText_KeyUp(object sender, KeyEventArgs e)
         {
-            displayedTextBox.Text = textBoxDisplayText.Text;            
+            displayedText.Content = textBoxDisplayText.Text.ToUpper();
         }
-
-        private void TextBoxDisplayText2_KeyUp(object sender, KeyEventArgs e)
-        {
-            displayedTextBox.Text = textBoxDisplayText2.Text;
-        }
-
-        #endregion
-
-        #region Close
 
         private void CloseLabel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        #endregion
-
         #endregion
     }
 }

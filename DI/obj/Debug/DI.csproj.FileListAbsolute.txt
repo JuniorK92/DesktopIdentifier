@@ -12,3 +12,18 @@ c:\users\radhames.morales\documents\visual studio 2015\Projects\DI\DI\obj\Debug\
 c:\users\radhames.morales\documents\visual studio 2015\Projects\DI\DI\obj\Debug\DI.csproj.GenerateResource.Cache
 c:\users\radhames.morales\documents\visual studio 2015\Projects\DI\DI\obj\Debug\DI.exe
 c:\users\radhames.morales\documents\visual studio 2015\Projects\DI\DI\obj\Debug\DI.pdb
+C:\_JS\Apps\DI\DI\bin\Debug\DI.exe.config
+C:\_JS\Apps\DI\DI\bin\Debug\DI.exe
+C:\_JS\Apps\DI\DI\bin\Debug\DI.pdb
+C:\_JS\Apps\DI\DI\obj\Debug\DI.csproj.AssemblyReference.cache
+C:\_JS\Apps\DI\DI\obj\Debug\MainWindow.g.cs
+C:\_JS\Apps\DI\DI\obj\Debug\App.g.cs
+C:\_JS\Apps\DI\DI\obj\Debug\DI_MarkupCompile.cache
+C:\_JS\Apps\DI\DI\obj\Debug\DI_MarkupCompile.lref
+C:\_JS\Apps\DI\DI\obj\Debug\MainWindow.baml
+C:\_JS\Apps\DI\DI\obj\Debug\DI.g.resources
+C:\_JS\Apps\DI\DI\obj\Debug\DI.Properties.Resources.resources
+C:\_JS\Apps\DI\DI\obj\Debug\DI.csproj.GenerateResource.cache
+C:\_JS\Apps\DI\DI\obj\Debug\DI.csproj.CoreCompileInputs.cache
+C:\_JS\Apps\DI\DI\obj\Debug\DI.exe
+C:\_JS\Apps\DI\DI\obj\Debug\DI.pdb
