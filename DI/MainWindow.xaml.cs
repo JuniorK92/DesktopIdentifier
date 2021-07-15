@@ -46,14 +46,15 @@ namespace DI
 
                         introducedColor = (Color)ColorConverter.ConvertFromString(hex);
 
-                        textBoxColor.Background = border.Background = border.BorderBrush = new SolidColorBrush(introducedColor);
+                        textBoxColor.Background = border.Background /*= border.BorderBrush*/ = new SolidColorBrush(introducedColor);
                         textBoxColor.Foreground = displayedText.Foreground = ContrastColor(new SolidColorBrush(introducedColor));
                     }
                 }
                 catch (Exception)
                 {
                     border.Background = textBoxColor.Background = Brushes.White;
-                    border.BorderBrush = textBoxColor.Foreground = displayedText.Foreground = Brushes.Black;
+                    /*border.BorderBrush =*/
+                    textBoxColor.Foreground = displayedText.Foreground = Brushes.Black;
                 }
 
                 textBoxColor.Text = hex;
@@ -88,7 +89,6 @@ namespace DI
             MenuItem clickedItem = (MenuItem)sender;
 
             SetColorFromHex(new BrushConverter().ConvertToString(clickedItem.Background));
-            //border.Background = border.BorderBrush = clickedItem.Background;
         }
 
         private void TextBoxColor_KeyUp(object sender, KeyEventArgs e)
@@ -105,6 +105,16 @@ namespace DI
         private void TextBoxDisplayText_KeyUp(object sender, KeyEventArgs e)
         {
             displayedText.Content = textBoxDisplayText.Text.ToUpper();
+        }
+        private void TextBoxOpacity_KeyUp(object sender, KeyEventArgs e)
+        {
+            double.TryParse(textBoxOpacity.Text, out var opacity);
+            this.Opacity = opacity == 0 ? 1 : opacity;
+        }
+        private void TextBoxBorderWidth_KeyUp(object sender, KeyEventArgs e)
+        {
+            double.TryParse(textBoxBorderWidth.Text, out var borderWidth);
+            border.BorderThickness = new Thickness(borderWidth, 0, borderWidth, borderWidth);
         }
 
         private void CloseLabel_Click(object sender, RoutedEventArgs e)

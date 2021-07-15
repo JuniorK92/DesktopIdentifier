@@ -9,7 +9,7 @@
         Title="MainWindow"
         AllowsTransparency="True"
         Height="20" Width="150" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True" WindowStartupLocation="Manual" Loaded="Window_Loaded" Deactivated="Window_Deactivated" Background="{x:Null}">
-    <Border x:Name="border" BorderBrush="Black" Background="#fff" BorderThickness="1" CornerRadius="0,0,10,10">
+    <Border x:Name="border" BorderBrush="Black" Background="#fff" BorderThickness="3,0,3,3" CornerRadius="0,0,10,10">
         <Border.ContextMenu>
             <ContextMenu Width="175">
                 <MenuItem Background="#FF5D5D" Foreground="#fff" Header="Red" Click="ListBoxColorItem_MouseLeftButtonDown"/>
@@ -23,11 +23,19 @@
                 <Label Content="Display Text"/>
                 <TextBox x:Name="textBoxDisplayText" Background="#fff" KeyUp="TextBoxDisplayText_KeyUp" Width="125" CharacterCasing="Upper"/>
                 <Separator/>
+                <Separator/>
+                <Label Content="Opacity (0 ~ 1)"/>
+                <TextBox x:Name="textBoxOpacity" Background="#fff" KeyUp="TextBoxOpacity_KeyUp" Width="125" CharacterCasing="Upper"/>
+                <Separator/>
+                <Separator/>
+                <Label Content="Border Width"/>
+                <TextBox x:Name="textBoxBorderWidth" Background="#fff" KeyUp="TextBoxBorderWidth_KeyUp" Width="125" CharacterCasing="Upper"/>
+                <Separator/>
                 <MenuItem Background="{x:Null}" Header="Close" Click="CloseLabel_Click"/>
             </ContextMenu>
         </Border.ContextMenu>
         <StackPanel Orientation="Horizontal" Background="{x:Null}">
-            <Label  x:Name="displayedText" FontSize="12" Content="test" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="148" Margin="0,-5,0,-3" />
+            <Label  x:Name="displayedText" FontSize="12" Content="test" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="144" Margin="0,0,0,0" Padding="0" />
         </StackPanel>
     </Border>
 </Window>
