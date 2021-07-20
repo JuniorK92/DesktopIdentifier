@@ -35,7 +35,7 @@
             </ContextMenu>
         </Border.ContextMenu>
         <StackPanel Orientation="Horizontal" Background="{x:Null}">
-            <Label  x:Name="displayedText" FontSize="12" Content="test" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="144" Margin="0,0,0,0" Padding="0" />
+            <Label  x:Name="displayedText" FontSize="12" Content="test" FontWeight="bold" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="144" Margin="0,0,0,0" Padding="0" />
         </StackPanel>
     </Border>
 </Window>
