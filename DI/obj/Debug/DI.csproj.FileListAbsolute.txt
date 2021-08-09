@@ -34,7 +34,6 @@ C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.csproj.AssemblyReference.cache
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\MainWindow.g.cs
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\App.g.cs
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI_MarkupCompile.cache
-C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI_MarkupCompile.lref
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\MainWindow.baml
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.g.resources
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.Properties.Resources.resources

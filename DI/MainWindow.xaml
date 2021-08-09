@@ -1,41 +1,140 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DI"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="DI.MainWindow"
-        mc:Ignorable="d"
-        Title="MainWindow"
-        AllowsTransparency="True"
-        Height="20" Width="150" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True" WindowStartupLocation="Manual" Loaded="Window_Loaded" Deactivated="Window_Deactivated" Background="{x:Null}">
-    <Border x:Name="border" BorderBrush="Black" Background="#fff" BorderThickness="3,0,3,3" CornerRadius="0,0,10,10">
+    x:Class="DI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="150"
+    Height="20"
+    AllowsTransparency="True"
+    Background="{x:Null}"
+    Deactivated="Window_Deactivated"
+    Loaded="Window_Loaded"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    Topmost="True"
+    WindowStartupLocation="Manual"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Border
+        x:Name="border"
+        Background="#fff"
+        BorderBrush="Black"
+        BorderThickness="3,0,3,3"
+        CornerRadius="0,0,10,10">
         <Border.ContextMenu>
             <ContextMenu Width="175">
-                <MenuItem Background="#FF5D5D" Foreground="#fff" Header="Red" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="#4ACC4A" Foreground="#fff" Header="Green" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="#4C4CFF" Foreground="#fff" Header="Blue" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <MenuItem Background="#B742B7" Foreground="#fff" Header="Purple" Click="ListBoxColorItem_MouseLeftButtonDown"/>
-                <Separator/>
-                <Label Content="Color Hex Code"/>
-                <TextBox x:Name="textBoxColor" Background="#fff" KeyUp="TextBoxColor_KeyUp" Width="125"/>
-                <Separator/>
-                <Label Content="Display Text"/>
-                <TextBox x:Name="textBoxDisplayText" Background="#fff" KeyUp="TextBoxDisplayText_KeyUp" Width="125" CharacterCasing="Upper"/>
-                <Separator/>
-                <Separator/>
-                <Label Content="Opacity (0 ~ 1)"/>
-                <TextBox x:Name="textBoxOpacity" Background="#fff" KeyUp="TextBoxOpacity_KeyUp" Width="125" CharacterCasing="Upper"/>
-                <Separator/>
-                <Separator/>
-                <Label Content="Border Width"/>
-                <TextBox x:Name="textBoxBorderWidth" Background="#fff" KeyUp="TextBoxBorderWidth_KeyUp" Width="125" CharacterCasing="Upper"/>
-                <Separator/>
-                <MenuItem Background="{x:Null}" Header="Close" Click="CloseLabel_Click"/>
+                <MenuItem
+                    Background="#FF5D5D"
+                    Click="ListBoxColorItem_MouseLeftButtonDown"
+                    Foreground="#fff"
+                    Header="Red" />
+                <MenuItem
+                    Background="#4ACC4A"
+                    Click="ListBoxColorItem_MouseLeftButtonDown"
+                    Foreground="#fff"
+                    Header="Green" />
+                <MenuItem
+                    Background="#4C4CFF"
+                    Click="ListBoxColorItem_MouseLeftButtonDown"
+                    Foreground="#fff"
+                    Header="Blue" />
+                <MenuItem
+                    Background="#B742B7"
+                    Click="ListBoxColorItem_MouseLeftButtonDown"
+                    Foreground="#fff"
+                    Header="Purple" />
+
+                <Separator />
+                <StackPanel>
+                    <Label Content="Color Hex Code" />
+                    <TextBox
+                        x:Name="textBoxColor"
+                        Width="125"
+                        Background="#fff"
+                        KeyUp="TextBoxColor_KeyUp" />
+
+                </StackPanel>
+
+                <Separator />
+                <StackPanel>
+                    <Label Content="Display Text" />
+                    <TextBox
+                        x:Name="textBoxDisplayText"
+                        Width="125"
+                        Background="#fff"
+                        CharacterCasing="Upper"
+                        KeyUp="TextBoxDisplayText_KeyUp" />
+                </StackPanel>
+
+                <Separator />
+                <StackPanel>
+                    <Label Content="Height" />
+                    <Slider
+                        x:Name="sizeSlider"
+                        Width="125"
+                        IsSnapToTickEnabled="True"
+                        Maximum="20"
+                        Minimum="1"
+                        TickFrequency="01"
+                        TickPlacement="BottomRight"
+                        ValueChanged="sizeSlider_ValueChanged"
+                        Value="20" />
+                </StackPanel>
+
+                <Separator />
+                <StackPanel>
+                    <Label Content="Opacity" />
+                    <Slider
+                        x:Name="opacitySlider"
+                        Width="125"
+                        IsSnapToTickEnabled="True"
+                        Maximum="1"
+                        Minimum="0.1"
+                        TickFrequency="0.1"
+                        TickPlacement="BottomRight"
+                        ValueChanged="opacitySlider_ValueChanged"
+                        Value="1" />
+                </StackPanel>
+
+                <Separator />
+                <StackPanel>
+                    <Label Content="Border Width" />
+                    <Slider
+                        x:Name="borderWidthSlider"
+                        Width="125"
+                        IsSnapToTickEnabled="True"
+                        Maximum="10"
+                        Minimum="0"
+                        TickFrequency="1"
+                        TickPlacement="BottomRight"
+                        ValueChanged="borderWidthSlider_ValueChanged"
+                        Value="3" />
+                </StackPanel>
+
+                <Separator />
+                <MenuItem
+                    Background="{x:Null}"
+                    Click="CloseLabel_Click"
+                    Header="Close" />
             </ContextMenu>
         </Border.ContextMenu>
-        <StackPanel Orientation="Horizontal" Background="{x:Null}">
-            <Label  x:Name="displayedText" FontSize="12" Content="test" FontWeight="bold" HorizontalAlignment="Stretch" BorderThickness="0" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  Width="144" Margin="0,0,0,0" Padding="0" />
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Background="{x:Null}"
+            Orientation="Horizontal">
+            <Label
+                x:Name="displayedText"
+                Width="Auto"
+                Padding="0"
+                Background="{x:Null}"
+                BorderThickness="0"
+                Content="test"
+                FontSize="12"
+                FontWeight="bold" />
         </StackPanel>
     </Border>
 </Window>

@@ -101,20 +101,29 @@ namespace DI
             }
 
             SetColorFromHex(introducedHex);
+            textBoxColor.CaretIndex = introducedHex.Length;
         }
         private void TextBoxDisplayText_KeyUp(object sender, KeyEventArgs e)
         {
             displayedText.Content = textBoxDisplayText.Text.ToUpper();
         }
-        private void TextBoxOpacity_KeyUp(object sender, KeyEventArgs e)
+        private void sizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            double.TryParse(textBoxOpacity.Text, out var opacity);
-            this.Opacity = opacity == 0 ? 1 : opacity;
+            var height = sizeSlider.Value;
+            Height = height;
+
+            if (displayedText != null && height > 8) { displayedText.FontSize = (height - 8); }
         }
-        private void TextBoxBorderWidth_KeyUp(object sender, KeyEventArgs e)
+        private void opacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            double.TryParse(textBoxBorderWidth.Text, out var borderWidth);
-            border.BorderThickness = new Thickness(borderWidth, 0, borderWidth, borderWidth);
+            var opacity = opacitySlider.Value;
+            Opacity = opacity;
+        }
+
+        private void borderWidthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var borderWidth = borderWidthSlider.Value;
+            border.BorderThickness = new Thickness(borderWidth, 0, borderWidth, borderWidth); ;
         }
 
         private void CloseLabel_Click(object sender, RoutedEventArgs e)
@@ -122,5 +131,6 @@ namespace DI
             this.Close();
         }
         #endregion
+
     }
 }
