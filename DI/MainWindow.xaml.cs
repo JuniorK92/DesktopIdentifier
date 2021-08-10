@@ -34,6 +34,15 @@ namespace DI
         #endregion
 
         #region Methods
+        void ResetWindowsPosition()
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+
+            this.Left = (screenWidth / 2) - (this.Width / 2);
+            this.Top = 0;
+            this.Topmost = true;
+
+        }
         private void SetColorFromHex(string hex)
         {
             if (!string.IsNullOrEmpty(hex))
@@ -46,14 +55,13 @@ namespace DI
 
                         introducedColor = (Color)ColorConverter.ConvertFromString(hex);
 
-                        textBoxColor.Background = border.Background /*= border.BorderBrush*/ = new SolidColorBrush(introducedColor);
+                        textBoxColor.Background = border.Background = new SolidColorBrush(introducedColor);
                         textBoxColor.Foreground = displayedText.Foreground = ContrastColor(new SolidColorBrush(introducedColor));
                     }
                 }
                 catch (Exception)
                 {
                     border.Background = textBoxColor.Background = Brushes.White;
-                    /*border.BorderBrush =*/
                     textBoxColor.Foreground = displayedText.Foreground = Brushes.Black;
                 }
 
@@ -72,16 +80,14 @@ namespace DI
         #region Events
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            double screenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-
-            this.Left = (screenWidth / 2) - (this.Width / 2);
-            this.Top = 0;
-            this.Topmost = true;
+            ResetWindowsPosition();
         }
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = (Window)sender;
             window.Topmost = true;
+
+            ResetWindowsPosition();
         }
 
         private void ListBoxColorItem_MouseLeftButtonDown(object sender, RoutedEventArgs e)
@@ -131,6 +137,5 @@ namespace DI
             this.Close();
         }
         #endregion
-
     }
 }
