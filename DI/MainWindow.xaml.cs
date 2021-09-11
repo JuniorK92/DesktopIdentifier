@@ -22,79 +22,31 @@ namespace DI
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel _viewModel;
         #region Constructor
 
         public MainWindow()
         {
             InitializeComponent();
 
-            displayedText.Content = string.Empty;
+            _viewModel = new MainWindowViewModel();
+            DataContext = _viewModel;
         }
 
-        #endregion
-
-        #region Methods
-        void ResetWindowsPosition()
-        {
-            double screenWidth = SystemParameters.PrimaryScreenWidth;
-
-            this.Left = (screenWidth / 2) - (this.Width / 2);
-            this.Top = 0;
-            this.Topmost = true;
-
-        }
-        private void SetColorFromHex(string hex)
-        {
-            if (!string.IsNullOrEmpty(hex))
-            {
-                try
-                {
-                    if (!string.IsNullOrEmpty(hex))
-                    {
-                        Color introducedColor = new Color();
-
-                        introducedColor = (Color)ColorConverter.ConvertFromString(hex);
-
-                        textBoxColor.Background = border.Background = new SolidColorBrush(introducedColor);
-                        textBoxColor.Foreground = displayedText.Foreground = ContrastColor(new SolidColorBrush(introducedColor));
-                    }
-                }
-                catch (Exception)
-                {
-                    border.Background = textBoxColor.Background = Brushes.White;
-                    textBoxColor.Foreground = displayedText.Foreground = Brushes.Black;
-                }
-
-                textBoxColor.Text = hex;
-            }
-        }
-        public SolidColorBrush ContrastColor(SolidColorBrush value)
-        {
-            var c = value.Color;
-            var l = 0.2126 * c.ScR + 0.7152 * c.ScG + 0.0722 * c.ScB;
-
-            return l < 0.5 ? Brushes.White : Brushes.Black;
-        }
         #endregion
 
         #region Events
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            ResetWindowsPosition();
-        }
         private void Window_Deactivated(object sender, EventArgs e)
         {
             Window window = (Window)sender;
             window.Topmost = true;
-
-            ResetWindowsPosition();
         }
 
         private void ListBoxColorItem_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             MenuItem clickedItem = (MenuItem)sender;
 
-            SetColorFromHex(new BrushConverter().ConvertToString(clickedItem.Background));
+            _viewModel.SetColorFromHex(new BrushConverter().ConvertToString(clickedItem.Background));
         }
 
         private void TextBoxColor_KeyUp(object sender, KeyEventArgs e)
@@ -106,30 +58,30 @@ namespace DI
                 introducedHex = introducedHex.Insert(0, "#");
             }
 
-            SetColorFromHex(introducedHex);
+            _viewModel.SetColorFromHex(introducedHex);
             textBoxColor.CaretIndex = introducedHex.Length;
         }
         private void TextBoxDisplayText_KeyUp(object sender, KeyEventArgs e)
         {
-            displayedText.Content = textBoxDisplayText.Text.ToUpper();
+            _viewModel.Text = textBoxDisplayText.Text.ToUpper();
         }
         private void sizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var height = sizeSlider.Value;
-            Height = height;
+            _viewModel.Height = height;
 
-            if (displayedText != null && height > 8) { displayedText.FontSize = (height - 8); }
+            if (displayedText != null && height > 8) { displayedText.FontSize = (_viewModel.Height - 8); }
         }
         private void opacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var opacity = opacitySlider.Value;
-            Opacity = opacity;
+            _viewModel.Opacity = opacity;
         }
 
         private void borderWidthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var borderWidth = borderWidthSlider.Value;
-            border.BorderThickness = new Thickness(borderWidth, 0, borderWidth, borderWidth); ;
+            _viewModel.BorderThickness = new Thickness(borderWidth, 0, borderWidth, borderWidth);
         }
 
         private void CloseLabel_Click(object sender, RoutedEventArgs e)

@@ -5,12 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="150"
-    Height="20"
+    Width="{Binding Width}"
+    Height="{Binding Height}"
     AllowsTransparency="True"
     Background="{x:Null}"
     Deactivated="Window_Deactivated"
-    Loaded="Window_Loaded"
     ResizeMode="NoResize"
     ShowInTaskbar="False"
     Topmost="True"
@@ -19,15 +18,15 @@
     mc:Ignorable="d">
     <Border
         x:Name="border"
-        Background="#fff"
+        Background="{Binding BackColor}"
         BorderBrush="Black"
-        BorderThickness="3,0,3,3"
+        BorderThickness="{Binding BorderThickness}"
         CornerRadius="0,0,10,10">
         <Border.ContextMenu>
             <ContextMenu Width="175">
                 <MenuItem
                     Background="#FF5D5D"
-                    Click="ListBoxColorItem_MouseLeftButtonDown"
+                    Click="ListBoxColorItem_MouseLeftButtonDown"                    
                     Foreground="#fff"
                     Header="Red" />
                 <MenuItem
@@ -52,7 +51,8 @@
                     <TextBox
                         x:Name="textBoxColor"
                         Width="125"
-                        Background="#fff"
+                        Background="{Binding BackColor}"
+                        Foreground="{Binding ForeColor}"
                         KeyUp="TextBoxColor_KeyUp" />
 
                 </StackPanel>
@@ -134,7 +134,8 @@
                 BorderThickness="0"
                 Content="test"
                 FontSize="12"
-                FontWeight="bold" />
+                FontWeight="bold"
+                Foreground="{Binding ForeColor}" />
         </StackPanel>
     </Border>
 </Window>

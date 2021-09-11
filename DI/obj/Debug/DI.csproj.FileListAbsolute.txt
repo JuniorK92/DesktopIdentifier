@@ -41,3 +41,17 @@ C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.csproj.GenerateResource.cache
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.csproj.CoreCompileInputs.cache
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.exe
 C:\_JS\Apps\DesktopIdentifier\DI\obj\Debug\DI.pdb
+C:\_dev\GitHub\DesktopIdentifier\DI\bin\Debug\DI.exe.config
+C:\_dev\GitHub\DesktopIdentifier\DI\bin\Debug\DI.exe
+C:\_dev\GitHub\DesktopIdentifier\DI\bin\Debug\DI.pdb
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.csproj.AssemblyReference.cache
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\MainWindow.baml
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\MainWindow.g.cs
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\App.g.cs
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI_MarkupCompile.cache
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.g.resources
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.Properties.Resources.resources
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.csproj.GenerateResource.cache
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.csproj.CoreCompileInputs.cache
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.exe
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Debug\DI.pdb

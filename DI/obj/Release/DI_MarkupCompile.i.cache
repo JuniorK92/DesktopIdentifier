@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\_JS\Apps\DesktopIdentifier\DI\obj\Release\
+C:\_dev\GitHub\DesktopIdentifier\DI\obj\Release\
 DI
 none
 false
 TRACE
-C:\_JS\Apps\DesktopIdentifier\DI\App.xaml
+C:\_dev\GitHub\DesktopIdentifier\DI\App.xaml
 11151548125
 
-6797349454
+91718179306
 13738642453
 MainWindow.xaml;
 
-True
+False
 
